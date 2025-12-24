@@ -1,0 +1,16 @@
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local RS = game:GetService("ReplicatedStorage")
+local daily = RS:WaitForChild("Remotes"):WaitForChild("daily")
+local RunService = game:GetService("RunService")
+local isRunning = true
+
+local autoEvent
+autoEvent = RunService.Heartbeat:Connect(function()
+    if isRunning then
+        pcall(function()
+            daily:FireServer(5000)
+        end)
+    end
+end)
